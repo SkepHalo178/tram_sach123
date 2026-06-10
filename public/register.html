@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đăng ký - TRẠM GỬI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">TRẠM GỬI</div>
+  </header>
+
+  <main>
+    <section class="page-title">
+      <h1>Đăng ký tài khoản</h1>
+      <p>Tạo tài khoản để sử dụng TRẠM GỬI.</p>
+    </section>
+
+    <section class="form-box">
+      <h2>Thông tin đăng ký</h2>
+
+      <form id="registerForm">
+        <label>Họ và tên</label>
+        <input id="registerName" type="text" placeholder="Ví dụ: Nguyễn Văn A" required>
+
+        <label>Email</label>
+        <input id="registerEmail" type="email" placeholder="email@example.com" required>
+
+        <label>Mật khẩu</label>
+        <input id="registerPassword" type="password" placeholder="Tối thiểu 6 ký tự" minlength="6" required>
+
+        <button type="submit">Đăng ký</button>
+      </form>
+
+      <p id="registerMessage"></p>
+      <p>Đã có tài khoản? <a href="login.html">Đăng nhập</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 TRẠM GỬI</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

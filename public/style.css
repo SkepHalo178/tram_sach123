@@ -1,0 +1,243 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f5f3ed;
+  color: #263238;
+}
+
+.site-header {
+  background: #2f5d50;
+  color: white;
+  padding: 18px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 22px;
+  font-weight: 500;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+.hero {
+  padding: 80px 8%;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: center;
+  background: linear-gradient(135deg, #f5f3ed, #dce8dc);
+}
+
+.hero h1 {
+  font-size: 48px;
+  color: #2f5d50;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.hero-card,
+.step,
+.book-card,
+.form-box,
+.admin-info {
+  background: white;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 5px 16px rgba(0,0,0,0.08);
+}
+
+.hero-card h3 {
+  color: #2f5d50;
+  margin-bottom: 14px;
+}
+
+.hero-card ul {
+  padding-left: 20px;
+  line-height: 2;
+}
+
+section {
+  padding: 50px 8%;
+}
+
+.section-title,
+.page-title h1 {
+  text-align: center;
+  font-size: 34px;
+  color: #2f5d50;
+  margin-bottom: 14px;
+}
+
+.page-title p {
+  text-align: center;
+  color: #5b6b66;
+  font-size: 17px;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-top: 30px;
+}
+
+.step span {
+  display: inline-block;
+  background: #2f5d50;
+  color: white;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  border-radius: 50%;
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.step h3,
+.book-card h3 {
+  color: #2f5d50;
+  margin-bottom: 10px;
+}
+
+.btn,
+button {
+  display: inline-block;
+  background: #d89b3d;
+  color: white;
+  padding: 13px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn:hover,
+button:hover {
+  background: #bd8127;
+}
+
+.btn.secondary {
+  background: #2f5d50;
+  margin-left: 10px;
+}
+
+.book-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.book-card p {
+  margin: 8px 0;
+}
+
+.price {
+  color: #d89b3d;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.form-box {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  margin-top: 14px;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.auth-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.note {
+  background: #edf5ef;
+  padding: 12px;
+  margin-top: 18px;
+  border-radius: 10px;
+  color: #2f5d50;
+}
+
+.delete-btn {
+  background: #b23b3b;
+  margin-left: 8px;
+}
+
+.delete-btn:hover {
+  background: #8f2e2e;
+}
+
+.admin-info {
+  margin-bottom: 24px;
+  color: #2f5d50;
+  font-weight: bold;
+}
+
+footer {
+  background: #263238;
+  color: white;
+  text-align: center;
+  padding: 26px;
+  margin-top: 40px;
+}
+
+@media (max-width: 900px) {
+  .site-header {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  nav a {
+    margin: 0 8px;
+  }
+
+  .hero,
+  .steps,
+  .book-list,
+  .auth-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+}

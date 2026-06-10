@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Ký gửi sách - TRẠM GỬI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">TRẠM GỬI</div>
+    <nav>
+      <a href="index.html">Trang chủ</a>
+      <a href="book.html">Danh sách sách</a>
+      <a href="consign.html">Ký gửi sách</a>
+      <a href="login.html">Đăng nhập</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-title">
+      <h1>Ký gửi sách</h1>
+      <p>Đăng nhập trước khi gửi sách để hệ thống lưu thông tin người gửi.</p>
+    </section>
+
+    <section class="form-box">
+      <h2>Thông tin sách ký gửi</h2>
+
+      <form id="bookForm">
+        <label>Tên sách</label>
+        <input id="name" type="text" placeholder="Ví dụ: Giáo trình Marketing căn bản" required>
+
+        <label>Loại sách</label>
+        <select id="category" required>
+          <option value="">Chọn loại sách</option>
+          <option>Giáo trình</option>
+          <option>Sách ngoại ngữ</option>
+          <option>Sách kỹ năng</option>
+          <option>Sách ôn thi</option>
+        </select>
+
+        <label>Tình trạng sách</label>
+        <select id="condition" required>
+          <option value="">Chọn tình trạng</option>
+          <option>Loại A - Còn mới</option>
+          <option>Loại B - Đã sử dụng</option>
+          <option>Loại C - Cũ nhưng còn dùng tốt</option>
+        </select>
+
+        <label>Giá mong muốn</label>
+        <input id="price" type="number" placeholder="Ví dụ: 70000" required>
+
+        <button type="submit">Gửi sách chờ duyệt</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 TRẠM GỬI</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
