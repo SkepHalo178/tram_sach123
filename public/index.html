@@ -1,41 +1,289 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>TRẠM GỬI - Trang chủ</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TRẠM GỬI - Ký gửi sách</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f3ed;
+      color: #263238;
+    }
+
+    header {
+      background: #2f5d50;
+      color: white;
+      padding: 18px 8%; 
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 24px;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      padding: 80px 8%;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+      background: linear-gradient(135deg, #f5f3ed, #dce8dc);
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      color: #2f5d50;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #d89b3d;
+      color: white;
+      padding: 14px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #bd8127;
+    }
+
+    .hero-card {
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+
+    .hero-card h3 {
+      margin-bottom: 15px;
+      color: #2f5d50;
+    }
+
+    .hero-card ul {
+      padding-left: 20px;
+      line-height: 2;
+    }
+
+    section {
+      padding: 60px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 34px;
+      color: #2f5d50;
+      margin-bottom: 35px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .step, .book-card, .form-box, .status-card {
+      background: white;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 5px 16px rgba(0,0,0,0.08);
+    }
+
+    .step span {
+      display: inline-block;
+      background: #2f5d50;
+      color: white;
+      width: 36px;
+      height: 36px;
+      line-height: 36px;
+      border-radius: 50%;
+      text-align: center;
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+
+    .step h3 {
+      margin-bottom: 10px;
+      color: #2f5d50;
+    }
+
+    .books {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .book-img {
+      height: 180px;
+      border-radius: 12px;
+      background: #dce8dc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 46px;
+      margin-bottom: 16px;
+    }
+
+    .book-card h3 {
+      margin-bottom: 8px;
+      color: #2f5d50;
+    }
+
+    .price {
+      color: #d89b3d;
+      font-weight: bold;
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #edf5ef;
+      color: #2f5d50;
+      padding: 6px 10px;
+      border-radius: 20px;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    .form-box {
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: bold;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    textarea {
+      min-height: 100px;
+    }
+
+    .status-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .progress {
+      height: 10px;
+      background: #eee;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 14px 0;
+    }
+
+    .progress div {
+      height: 100%;
+      background: #2f5d50;
+    }
+
+    footer {
+      background: #263238;
+      color: white;
+      text-align: center;
+      padding: 30px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 900px) {
+      .hero, .steps, .books, .status-list {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      nav a {
+        margin: 0 8px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
     <div class="logo">TRẠM GỬI</div>
     <nav>
-      <a href="index.html">Trang chủ</a>
-      <a href="book.html">Danh sách sách</a>
-      <a href="consign.html">Ký gửi sách</a>
-      <a href="login.html">Đăng nhập</a>
-      <a href="admin.html">Admin</a>
+      <a href="#home">Trang chủ</a>
+      <a href="books.html">Sách</a>
+      <a href="#consign">Ký gửi</a>
+      <a href="#status">Theo dõi</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero" id="home">
       <div>
         <h1>Ký gửi sách cũ, lan tỏa tri thức mới</h1>
         <p>
           TRẠM GỬI là hệ thống ký gửi, kết nối và tái sử dụng sách giáo trình,
-          sách ngoại ngữ, sách kỹ năng dành cho học sinh, sinh viên và người đi làm.
+          sách kỹ năng, sách ngoại ngữ dành cho học sinh, sinh viên và người đi làm.
         </p>
-        <a href="consign.html" class="btn">Ký gửi sách ngay</a>
-        <a href="book.html" class="btn secondary">Xem sách</a>
+        <a class="btn" href="#consign">Ký gửi sách ngay</a>
       </div>
 
       <div class="hero-card">
-        <h3>Mô hình hoạt động</h3>
+        <h3>Giá trị của dự án</h3>
         <ul>
-          <li>Ký gửi sách</li>
-          <li>Kiểm định chất lượng</li>
-          <li>Đăng bán minh bạch</li>
-          <li>Sau 30 ngày có thể chuyển từ thiện</li>
+          <li>Giảm chi phí mua học liệu</li>
+          <li>Tăng tỷ lệ tái sử dụng sách</li>
+          <li>Kiểm định và định giá minh bạch</li>
+          <li>Sách không bán được có thể chuyển từ thiện</li>
         </ul>
       </div>
     </section>
@@ -46,25 +294,130 @@
         <div class="step">
           <span>1</span>
           <h3>Ký gửi</h3>
-          <p>Người dùng gửi thông tin sách lên hệ thống.</p>
+          <p>Người dùng nhập thông tin sách muốn ký gửi lên hệ thống.</p>
         </div>
-
         <div class="step">
           <span>2</span>
           <h3>Kiểm định</h3>
-          <p>Admin kiểm tra tình trạng sách và duyệt.</p>
+          <p>Kho kiểm tra tình trạng sách và phân loại chất lượng A/B/C.</p>
         </div>
-
         <div class="step">
           <span>3</span>
           <h3>Đăng bán</h3>
-          <p>Sách được hiển thị trong danh sách sách.</p>
+          <p>Sách được định giá, đăng lên website và kết nối với người mua.</p>
         </div>
-
         <div class="step">
           <span>4</span>
-          <h3>Tái sử dụng</h3>
-          <p>Sách được kết nối tới người cần học liệu.</p>
+          <h3>Xử lý 30 ngày</h3>
+          <p>Nếu chưa bán được, sách có thể giảm giá, hoàn trả hoặc chuyển từ thiện.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="books">
+      <h2 class="section-title">Sách đang có tại trạm</h2>
+      <div class="books">
+        <div class="book-card">
+          <div class="book-img">📘</div>
+          <span class="tag">Giáo trình</span>
+          <h3>Kinh tế vi mô</h3>
+          <p>Tình trạng: Loại A - còn mới 90%</p>
+          <p class="price">65.000 VND</p>
+          <button class="btn">Thêm vào giỏ</button>
+        </div>
+
+        <div class="book-card">
+          <div class="book-img">📗</div>
+          <span class="tag">Ngoại ngữ</span>
+          <h3>English Grammar in Use</h3>
+          <p>Tình trạng: Loại B - có ghi chú nhẹ</p>
+          <p class="price">80.000 VND</p>
+          <button class="btn">Thêm vào giỏ</button>
+        </div>
+
+        <div class="book-card">
+          <div class="book-img">📙</div>
+          <span class="tag">Kỹ năng</span>
+          <h3>Tư duy nhanh và chậm</h3>
+          <p>Tình trạng: Loại A - bìa đẹp, không rách</p>
+          <p class="price">95.000 VND</p>
+          <button class="btn">Thêm vào giỏ</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="consign">
+      <h2 class="section-title">Đăng ký ký gửi sách</h2>
+      <div class="form-box">
+        <form id="bookForm">
+          <div class="form-group">
+            <label>Họ và tên</label>
+            <input type="text" id="name" placeholder="Nhập họ tên của bạn" required />
+          </div>
+
+          <div class="form-group">
+            <label>Tên sách</label>
+            <input type="text" id="bookName" placeholder="Ví dụ: Giáo trình Marketing căn bản" required />
+          </div>
+
+          <div class="form-group">
+            <label>Loại sách</label>
+            <select id="category" required>
+              <option value="">-- Chọn loại sách --</option>
+              <option>Giáo trình</option>
+              <option>Sách ngoại ngữ</option>
+              <option>Sách kỹ năng</option>
+              <option>Sách ôn thi</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Tình trạng sách</label>
+            <select id="condition" required>
+              <option value="">-- Chọn tình trạng --</option>
+              <option>Loại A - còn mới</option>
+              <option>Loại B - đã qua sử dụng</option>
+              <option>Loại C - cũ nhưng còn dùng tốt</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Giá mong muốn</label>
+            <input type="number" id="price" placeholder="Nhập giá mong muốn" required />
+          </div>
+
+          <div class="form-group">
+            <label>Ghi chú</label>
+            <textarea id="note" placeholder="Mô tả thêm về sách"></textarea>
+          </div>
+
+          <button class="btn" type="submit">Gửi thông tin ký gửi</button>
+        </form>
+      </div>
+    </section>
+
+    <section id="status">
+      <h2 class="section-title">Theo dõi sách ký gửi</h2>
+      <div class="status-list">
+        <div class="status-card">
+          <h3>Marketing căn bản</h3>
+          <p>Trạng thái: Đang bán</p>
+          <div class="progress"><div style="width: 55%"></div></div>
+          <p>Còn 14/30 ngày</p>
+        </div>
+
+        <div class="status-card">
+          <h3>IELTS Reading</h3>
+          <p>Trạng thái: Đã bán</p>
+          <div class="progress"><div style="width: 100%"></div></div>
+          <p>Chờ thanh toán cho người gửi</p>
+        </div>
+
+        <div class="status-card">
+          <h3>Sách kỹ năng mềm</h3>
+          <p>Trạng thái: Chuyển từ thiện</p>
+          <div class="progress"><div style="width: 100%"></div></div>
+          <p>Đã hết chu kỳ 30 ngày</p>
         </div>
       </div>
     </section>
@@ -74,6 +427,30 @@
     <p>© 2026 TRẠM GỬI - Ký gửi, kết nối và tái sử dụng tri thức.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    const form = document.getElementById("bookForm");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const bookName = document.getElementById("bookName").value;
+      const category = document.getElementById("category").value;
+      const condition = document.getElementById("condition").value;
+      const price = document.getElementById("price").value;
+
+      alert(
+        "Đăng ký ký gửi thành công!\n\n" +
+        "Người gửi: " + name + "\n" +
+        "Số điện thoại: " + number + "\n" +
+        "Tên sách: " + bookName + "\n" +
+        "Loại sách: " + category + "\n" +
+        "Tình trạng: " + condition + "\n" +
+        "Giá mong muốn: " + Number(price).toLocaleString("vi-VN") + " VND"
+      );
+
+      form.reset();
+    });
+  </script>
 </body>
 </html>
