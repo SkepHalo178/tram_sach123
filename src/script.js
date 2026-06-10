@@ -9,7 +9,7 @@ const path = require("path");
 require("dotenv").config({ path: path.join(__dirname, ".env") });
 
 const app = express();
-//const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
 const SECRET_KEY = process.env.JWT_SECRET || "tram_gui_secret_key";
 const CONSIGNMENT_DAYS = 30;
 const DEFAULT_SELLER_ID = 1;
@@ -52,17 +52,22 @@ const GRADE_TO_LABEL = {
   C: "Loại C - Cũ nhưng còn dùng tốt"
 };
 
+const certPath = path.join(__dirname, "..", "cert", "isrgrootx1.pem");
+const sslConfig = {
+  minVersion: "TLSv1.2",
+  rejectUnauthorized: false
+};
+if (fs.existsSync(certPath)) {
+  sslConfig.ca = fs.readFileSync(certPath);
+}
+
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT) || 4000,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME || "qtda",
-  ssl: {
-    minVersion: "TLSv1.2",
-    rejectUnauthorized: false,
-    ca: fs.readFileSync(path.join(__dirname, "..", "cert", "isrgrootx1.pem"))
-  },
+  ssl: sslConfig,
   waitForConnections: true,
   connectionLimit: 10
 });
@@ -393,7 +398,6 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: "Lỗi hệ thống" });
 });
 
-/*app.listen(PORT, () => {
-  console.log(`Server đang chạy tại http://localhost:${PORT}`);
-});*/
-module.exports = app;
+app.listen(PORT, () => {
+  console.log(`Server đang chạy tại port ${PORT}`);
+});
